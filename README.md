@@ -94,7 +94,3 @@ Buka aplikasi melalui browser:
 ## Repository
 
 GitHub: https://github.com/Sheva1012/RESTful-API
-
-**Developer:** Sheva Adrian Ernanto
-
-**Keperluan:** Technical Assessment MagangHub – PT Akui Bird Nest Indonesia
