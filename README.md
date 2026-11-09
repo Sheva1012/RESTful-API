@@ -43,8 +43,8 @@ Aplikasi RESTful API dan Dashboard Fullstack sederhana untuk mengelola siklus pe
 
 ### 1. Clone Repository
 ```bash
-git clone https://github.com/<username>/<repo-name>.git
-cd <repo-name>
+git clone https://github.com/Sheva1012/RESTful-API.git
+cd RESTful-API
 ```
 
 ### 2. Install Dependensi Composer
