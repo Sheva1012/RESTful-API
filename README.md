@@ -1,88 +1,100 @@
-# Sistem Peminjaman Asset - RESTful API & Fullstack App
-**Technical Assessment Maganghub — PT Akui Bird Nest Indonesia**
+# Sistem Peminjaman Aset
 
-Aplikasi RESTful API dan Dashboard Fullstack sederhana untuk mengelola siklus peminjaman dan pengembalian aset perusahaan secara terintegrasi, aman, dan tervalidasi.
+**Technical Assessment MagangHub – PT Akui Bird Nest Indonesia**
 
----
+Aplikasi RESTful API dan Fullstack sederhana untuk mengelola data aset, peminjaman, dan pengembalian aset perusahaan.
 
-## 🌟 Fitur Utama
+## Fitur Utama
 
-1. **Manajemen Master Asset (CRUD)**
-   - Tambah, lihat, perbarui, dan hapus data aset.
-   - Filter aset berdasarkan `status` (*available*, *borrowed*, *maintenance*, *retired*), `category`, dan pencarian keyword.
-   - Proteksi keamanan: Aset yang sedang dipinjam **tidak dapat dihapus** dari sistem.
+1. **Manajemen Aset**
+   - Menambah, melihat, mengubah, dan menghapus data aset.
+   - Melihat status dan ketersediaan aset.
+   - Mencari dan memfilter data aset.
 
-2. **Transaksi Peminjaman Asset (Borrowing)**
-   - Validasi ketersediaan real-time: Sistem **menolak (422 Unprocessable Entity)** peminjaman aset yang sedang dipinjam atau berstatus *maintenance*.
-   - Otomatisasi status: Ketika aset berhasil dipinjam, status aset otomatis berubah menjadi `borrowed`.
-   - Kode transaksi otomatis unik (contoh: `LOAN-20261109-XXXX`).
+2. **Peminjaman Aset**
+   - Mengajukan peminjaman aset.
+   - Validasi ketersediaan aset sebelum dipinjam.
+   - Mengubah status aset secara otomatis setelah peminjaman.
 
-3. **Pengembalian Asset (Returning)**
-   - Proses pengembalian unit dengan pencatatan tanggal aktual kembali.
-   - Deteksi keterlambatan pengembalian (*overdue*).
-   - Otomatisasi status: Setelah pengembalian disetujui, status aset langsung dipulihkan menjadi `available` dan dapat dipinjam kembali.
-   - Catatan kondisi barang saat dikembalikan.
+3. **Pengembalian Aset**
+   - Memproses pengembalian aset.
+   - Mencatat tanggal dan kondisi pengembalian.
+   - Mengembalikan status aset menjadi tersedia.
 
-4. **Dashboard Statistik & Analitik**
-   - Ringkasan total aset, unit tersedia, unit dipinjam, unit dalam perbaikan.
-   - Total transaksi aktif dan selesai.
-   - Distribusi aset per kategori.
-   - Riwayat transaksi peminjaman terbaru.
+4. **Dashboard**
+   - Menampilkan statistik aset.
+   - Menampilkan jumlah aset tersedia dan dipinjam.
+   - Menampilkan riwayat transaksi peminjaman.
 
-5. **Antarmuka Interaktif (Fullstack Single Page)**
-   - Dashboard responsif berbasis Tailwind CSS & Alpine.js di endpoint root (`/`).
-   - Modal interaktif untuk membuat pinjaman baru, input aset baru, dan 1-click pengembalian.
-   - Dilengkapi *Live API Tester* langsung di browser.
-
-6. **Automated Testing (PHPUnit / Pest)**
-   - 12 Feature & Unit Tests dengan 44 Assertions (100% Pass) mencakup seluruh skenario *happy path* dan *edge cases* bisnis.
-
----
-
-## 🚀 Panduan Instalasi & Menjalankan Proyek
+## Panduan Instalasi
 
 ### 1. Clone Repository
+
 ```bash
 git clone https://github.com/Sheva1012/RESTful-API.git
 cd RESTful-API
 ```
 
-### 2. Install Dependensi Composer
+### 2. Install Dependency
+
 ```bash
 composer install
 ```
 
-### 3. Konfigurasi Environment File
-Salin file `.env.example` ke `.env`:
-```bash
-cp .env.example .env
-```
-*(Di Windows PowerShell: `Copy-Item .env.example .env`)*
+### 3. Konfigurasi Environment
 
-### 4. Generate Application Key
+Salin file `.env.example` menjadi `.env`.
+
+Untuk Windows PowerShell:
+
+```powershell
+Copy-Item .env.example .env
+```
+
+### 4. Buat Database
+
+- Jalankan Apache dan MySQL melalui XAMPP.
+- Buka phpMyAdmin melalui `http://localhost/phpmyadmin`.
+- Buat database baru dengan nama `restful_api`.
+- Buka file `.env` dan sesuaikan konfigurasi berikut:
+
+```env
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=restful_api
+DB_USERNAME=root
+DB_PASSWORD=
+```
+
+### 5. Generate Application Key
+
 ```bash
 php artisan key:generate
 ```
 
-### 5. Setup Database & Seeding Data Dummy
-Pastikan file database SQLite telah siap dan jalankan migrasi beserta data awal:
-```bash
-# Untuk SQLite:
-touch database/database.sqlite
+### 6. Jalankan Migration dan Seeder
 
-# Jalankan migrasi dan seeder
+```bash
 php artisan migrate --seed
 ```
 
-Data awal yang otomatis di-seed:
-- **8 Master Asset** (MacBook Pro M2, Laptop ThinkPad, Proyektor Epson, Mobil Avanza Operasional, Kamera Sony A7 IV, dsb.)
-- **4 Data Peminjam/Karyawan PT Akui Bird Nest** (IT Support, QC, Operasional, Marketing)
-- **4 Transaksi Peminjaman** (2 status aktif dipinjam, 2 status sudah dikembalikan)
+### 7. Jalankan Aplikasi
 
-### 6. Jalankan Server Development
 ```bash
 php artisan serve
 ```
-Aplikasi dapat diakses melalui browser di: **`http://127.0.0.1:8000`**
+
+Buka aplikasi melalui browser:
+
+`http://127.0.0.1:8000`
 
 ---
+
+## Repository
+
+GitHub: https://github.com/Sheva1012/RESTful-API
+
+**Developer:** Sheva Adrian Ernanto
+
+**Keperluan:** Technical Assessment MagangHub – PT Akui Bird Nest Indonesia
