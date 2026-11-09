@@ -1,0 +1,284 @@
+{
+  "info": {
+    "name": "PT Akui Bird Nest Indonesia - Sistem Peminjaman Asset API",
+    "description": "Koleksi Postman RESTful API untuk Sistem Peminjaman Asset (Technical Assessment Maganghub)",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "General",
+      "item": [
+        {
+          "name": "API Ping Health Check",
+          "request": {
+            "method": "GET",
+            "header": [
+              { "key": "Accept", "value": "application/json" }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/ping",
+              "host": ["{{base_url}}"],
+              "path": ["api", "ping"]
+            }
+          }
+        },
+        {
+          "name": "Dashboard Statistics",
+          "request": {
+            "method": "GET",
+            "header": [
+              { "key": "Accept", "value": "application/json" }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/dashboard",
+              "host": ["{{base_url}}"],
+              "path": ["api", "dashboard"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Assets",
+      "item": [
+        {
+          "name": "Get All Assets (Filtered & Searched)",
+          "request": {
+            "method": "GET",
+            "header": [
+              { "key": "Accept", "value": "application/json" }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/assets?all=1",
+              "host": ["{{base_url}}"],
+              "path": ["api", "assets"],
+              "query": [
+                { "key": "all", "value": "1" },
+                { "key": "status", "value": "available", "disabled": true },
+                { "key": "category", "value": "Elektronik", "disabled": true },
+                { "key": "search", "value": "MacBook", "disabled": true }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get Asset Categories",
+          "request": {
+            "method": "GET",
+            "header": [
+              { "key": "Accept", "value": "application/json" }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/assets/categories",
+              "host": ["{{base_url}}"],
+              "path": ["api", "assets", "categories"]
+            }
+          }
+        },
+        {
+          "name": "Create New Asset",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Accept", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"asset_code\": \"AST-010\",\n  \"name\": \"Drone DJI Mavic 3 Enterprise\",\n  \"category\": \"Dokumentasi\",\n  \"status\": \"available\",\n  \"condition\": \"Bagus\",\n  \"description\": \"Thermal imaging camera untuk inspeksi gedung sarang walet\",\n  \"purchase_date\": \"2024-05-10\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/assets",
+              "host": ["{{base_url}}"],
+              "path": ["api", "assets"]
+            }
+          }
+        },
+        {
+          "name": "Get Asset Detail",
+          "request": {
+            "method": "GET",
+            "header": [
+              { "key": "Accept", "value": "application/json" }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/assets/1",
+              "host": ["{{base_url}}"],
+              "path": ["api", "assets", "1"]
+            }
+          }
+        },
+        {
+          "name": "Update Asset",
+          "request": {
+            "method": "PUT",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Accept", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Laptop Lenovo ThinkPad T14 Gen 4\",\n  \"condition\": \"Sangat Bagus\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/assets/1",
+              "host": ["{{base_url}}"],
+              "path": ["api", "assets", "1"]
+            }
+          }
+        },
+        {
+          "name": "Delete Asset",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              { "key": "Accept", "value": "application/json" }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/assets/1",
+              "host": ["{{base_url}}"],
+              "path": ["api", "assets", "1"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Borrowers",
+      "item": [
+        {
+          "name": "Get All Borrowers",
+          "request": {
+            "method": "GET",
+            "header": [
+              { "key": "Accept", "value": "application/json" }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/borrowers?all=1",
+              "host": ["{{base_url}}"],
+              "path": ["api", "borrowers"],
+              "query": [
+                { "key": "all", "value": "1" }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Create New Borrower",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Accept", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"borrower_code\": \"EMP-005\",\n  \"name\": \"Rian Hidayat\",\n  \"department\": \"RnD & Laboratorium\",\n  \"email\": \"rian.hidayat@akuibirdnest.co.id\",\n  \"phone\": \"081298765435\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/borrowers",
+              "host": ["{{base_url}}"],
+              "path": ["api", "borrowers"]
+            }
+          }
+        },
+        {
+          "name": "Get Borrower Detail",
+          "request": {
+            "method": "GET",
+            "header": [
+              { "key": "Accept", "value": "application/json" }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/borrowers/1",
+              "host": ["{{base_url}}"],
+              "path": ["api", "borrowers", "1"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Loans (Peminjaman Asset)",
+      "item": [
+        {
+          "name": "Get All Loans",
+          "request": {
+            "method": "GET",
+            "header": [
+              { "key": "Accept", "value": "application/json" }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/loans?all=1",
+              "host": ["{{base_url}}"],
+              "path": ["api", "loans"],
+              "query": [
+                { "key": "all", "value": "1" },
+                { "key": "status", "value": "active", "disabled": true }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Borrow Asset (Create Loan)",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Accept", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"asset_id\": 1,\n  \"borrower_id\": 1,\n  \"borrow_date\": \"2026-11-09\",\n  \"expected_return_date\": \"2026-11-12\",\n  \"purpose\": \"Pemeriksaan jaringan server cabang\",\n  \"notes\": \"Kondisi normal\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/loans",
+              "host": ["{{base_url}}"],
+              "path": ["api", "loans"]
+            }
+          }
+        },
+        {
+          "name": "Return Asset (Process Pengembalian)",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Accept", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"actual_return_date\": \"2026-11-10\",\n  \"condition\": \"Bagus\",\n  \"notes\": \"Barang dikembalikan lengkap dengan charger dan tas\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/loans/1/return",
+              "host": ["{{base_url}}"],
+              "path": ["api", "loans", "1", "return"]
+            }
+          }
+        },
+        {
+          "name": "Get Loan Detail",
+          "request": {
+            "method": "GET",
+            "header": [
+              { "key": "Accept", "value": "application/json" }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/loans/1",
+              "host": ["{{base_url}}"],
+              "path": ["api", "loans", "1"]
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://127.0.0.1:8000"
+    }
+  ]
+}
+
