@@ -39,17 +39,6 @@ Aplikasi RESTful API dan Dashboard Fullstack sederhana untuk mengelola siklus pe
 
 ---
 
-## 🛠️ Tech Stack
-
-- **Framework**: Laravel 11 / 12
-- **Bahasa**: PHP 8.4+
-- **Database**: MySQL (XAMPP / phpMyAdmin) / SQLite ready
-- **Frontend**: Blade (Modular Layout & Pages) + Tailwind CSS CDN + Alpine.js
-- **API Architecture**: RESTful API JSON standar (`success`, `message`, `data`, `errors`)
-- **Testing**: PHPUnit (16 Tests, 48 Assertions - 100% Passed)
-
----
-
 ## 🚀 Panduan Instalasi & Menjalankan Proyek
 
 ### 1. Clone Repository
